@@ -1,39 +1,37 @@
-const boxContainer = document.getElementById("container");
-const box = document.createElement("div");
-const newSquare = document.getElementById("newSquare");
+//Created constant variabes to make referencing later easier
+const container = document.getElementById("container");
+const newGridBtn = document.getElementById("newGridBtn");
 
-//Creates a box with event listeners to change the color when the user hover over them
-function makeBox() {
-  const box = document.createElement("div");
-  box.style.width = "100px";
-  box.style.height = "100px";
-  box.style.backgroundColor = "gray";
-  box.style.margin = "0px";
+//Creates the grid and adjust the size of the boxes based on the number provided so they evenly take up the space
 
-  box.addEventListener("mouseenter", () => {
-    box.style.backgroundColor = "black";
-  });
+function createGrid(num) {
+  container.innerHTML = "";
+  let boxSize = 960 / num; //960 is the pixel size of the container
+  numOfBoxes = num * num;
+  for (let i = 0; i < numOfBoxes; i++) {
+    const box = document.createElement("div");
+    box.className = "box";
+    box.style.width = `${boxSize}px`;
+    box.style.height = `${boxSize}px`;
+    box.style.border = "1px solid black";
 
-  box.addEventListener("mouseleave", () => {
-    box.style.backgroundColor = "gray";
-  });
-
-  return box;
-}
-
-//Creates 16 boxes using the makeBox function
-for (let i = 0; i < 16; i++) {
-  freshBox = makeBox();
-  boxContainer.appendChild(freshBox);
-}
-
-newSquare.addEventListener("click", () => {
-  let amountOfSquares = prompt("Please amount of squares you want per side");
-  while (boxContainer.firstChild) {
-    boxContainer.removeChild(boxContainer.firstChild);
+    box.addEventListener("mouseenter", () => {
+      box.style.backgroundColor = "black";
+    });
+    container.appendChild(box);
   }
-  for (let i = 0; i < amountOfSquares; i++) {
-    freshBox = makeBox();
-    boxContainer.appendChild(freshBox);
+}
+//Starts off with a 16 by 16 grid when first loaded
+createGrid(16);
+
+//Resets the grid with a new number and checks if number is equal to or less than 100
+newGridBtn.addEventListener("click", () => {
+  let gridSize = parseInt(
+    prompt("Enter the number of squares per side (100 or less):")
+  );
+  if (gridSize > 100) {
+    alert("Sorry, biggest size is 100. Please try again");
+    return;
   }
+  createGrid(gridSize);
 });
