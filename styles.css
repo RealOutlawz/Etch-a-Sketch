@@ -40,6 +40,7 @@ button:hover {
   flex-wrap: wrap;
   width: 960px;
   height: 960px;
+  margin-bottom: 20px;
 }
 
 .box {
