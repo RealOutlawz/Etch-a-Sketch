@@ -7,6 +7,20 @@ body {
   margin: 0;
 }
 
+#heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px;
+}
+
+button {
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
 #container {
   border: 1px solid #000;
   display: flex;
