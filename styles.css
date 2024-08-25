@@ -8,10 +8,15 @@ body {
 }
 
 #heading {
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0px;
+  align-items: center;
+}
+
+h1 {
+  color: #2c3e50;
 }
 
 button {
